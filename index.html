@@ -3,438 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小学初中高中课程预约 | 全科辅导免费试听</title>
+    <title>学习预约中心</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "PingFang SC", "Microsoft Yahei", sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        a {
-            text-decoration: none;
-        }
-        ul {
-            list-style: none;
-        }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+            font-family: "Microsoft YaHei", sans-serif;
         }
 
-        /* 导航栏 */
+        /* 绿色主题 #2ECC71 */
+        :root {
+            --main-color: #2ECC71;
+            --light-color: #E8F8F0;
+            --dark-color: #2A3B4C;
+            --white: #ffffff;
+            --gray: #f5f7fa;
+        }
+
+        body {
+            background-color: var(--gray);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
         header {
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding: 15px 0;
-            z-index: 999;
-            transition: background 0.3s;
-            background: transparent;
-        }
-        header.active {
-            background: #165DFF;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-        .nav-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 24px;
-            color: #fff;
-            font-weight: bold;
-        }
-        .nav-menu {
-            display: flex;
-            gap: 35px;
-        }
-        .nav-menu a {
-            color: #fff;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-        .nav-menu a:hover {
-            color: #ffd16d;
-        }
-        .nav-book-btn {
-            background: #ff6b35;
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 30px;
-            font-size: 15px;
-            transition: 0.3s;
-        }
-        .nav-book-btn:hover {
-            background: #ff5518;
-        }
-
-        /* 首屏Banner */
-        .banner {
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(rgba(22, 93, 255, 0.75), rgba(22, 93, 255, 0.75)),
-            url('https://picsum.photos/id/240/1920/1080') center/cover no-repeat;
-            display: flex;
-            align-items: center;
+            background-color: var(--main-color);
+            color: var(--white);
+            padding: 20px;
             text-align: center;
-            color: #fff;
-        }
-        .banner-text h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-        .banner-text p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-        .banner-btn {
-            background: #ff6b35;
-            color: #fff;
-            padding: 15px 35px;
-            border-radius: 30px;
-            font-size: 18px;
-            margin: 0 10px;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .banner-btn:hover {
-            background: #fff;
-            color: #165DFF;
-        }
-        .banner-btn2 {
-            background: transparent;
-            border: 2px solid #fff;
-        }
-        .banner-btn2:hover {
-            background: #fff;
-            color: #165DFF;
-        }
-
-        /* 通用区块样式 */
-        section {
-            padding: 80px 0;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-title h2 {
-            font-size: 36px;
-            color: #222;
-            margin-bottom: 12px;
-        }
-        .section-title p {
-            color: #666;
-            font-size: 16px;
-        }
-
-        /* 课程板块 */
-        .course-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .course-card {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            padding: 40px 25px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .course-card:hover {
-            transform: translateY(-8px);
-        }
-        .course-card h3 {
             font-size: 22px;
-            color: #165DFF;
-            margin: 15px 0;
-        }
-        .course-card p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-        .course-card a {
-            color: #ff6b35;
             font-weight: bold;
-            border: 1px solid #ff6b35;
-            padding: 8px 20px;
-            border-radius: 25px;
-            transition: 0.3s;
-        }
-        .course-card a:hover {
-            background: #ff6b35;
-            color: #fff;
         }
 
-        /* 教学优势 */
-        .advantage-bg {
-            background: #f7f9ff;
-        }
-        .adv-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-        .adv-item {
-            text-align: center;
-            padding: 30px 20px;
-        }
-        .adv-item h4 {
-            font-size: 20px;
-            margin: 15px 0;
-            color: #222;
-        }
-        .adv-item p {
-            color: #666;
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
         }
 
-        /* 预约表单 */
-        .book-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .book-left h3 {
-            font-size: 30px;
-            color: #222;
-            margin-bottom: 20px;
-        }
-        .book-left p {
-            color: #666;
-            line-height: 2;
-            margin-bottom: 15px;
-        }
-        .book-form {
-            background: #f7f9ff;
-            padding: 35px;
+        .card {
+            background: var(--white);
             border-radius: 12px;
-        }
-        .form-item {
+            padding: 25px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        .form-item label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
+
+        .card h2 {
+            color: var(--main-color);
+            margin-bottom: 15px;
+            font-size: 20px;
         }
-        .form-item input,
-        .form-item select,
-        .form-item textarea {
+
+        input, select, button {
             width: 100%;
             padding: 12px 15px;
+            margin: 8px 0;
             border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.3s;
-        }
-        .form-item input:focus,
-        .form-item select:focus,
-        .form-item textarea:focus {
-            border-color: #165DFF;
-        }
-        .submit {
-            width: 100%;
-            background: #165DFF;
-            color: #fff;
-            border: none;
-            padding: 14px;
+            border-radius: 8px;
             font-size: 16px;
-            border-radius: 6px;
+        }
+
+        button {
+            background-color: var(--main-color);
+            color: white;
+            border: none;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
         }
-        .submit:hover {
-            background: #0e4bd9;
+
+        button:hover {
+            background-color: #27AE60;
         }
 
-        /* 页脚 */
         footer {
-            background: #165DFF;
-            color: #fff;
             text-align: center;
-            padding: 40px 0;
-        }
-        footer p {
-            margin: 8px 0;
-            opacity: 0.9;
-        }
-
-        /* 手机端适配 */
-        @media(max-width:768px){
-            .nav-menu {display: none;}
-            .banner-text h1 {font-size: 30px;}
-            .course-row {grid-template-columns: 1fr;}
-            .adv-row {grid-template-columns: 1fr 1fr;}
-            .book-row {grid-template-columns: 1fr;}
-            section {padding: 50px 0;}
+            padding: 20px;
+            color: #666;
+            margin-top: 40px;
         }
     </style>
 </head>
+
 <body>
-    <!-- 导航栏 -->
-    <header id="navbar">
-        <div class="container nav-wrap">
-            <div class="logo">优学教育辅导</div>
-            <ul class="nav-menu">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#course">课程体系</a></li>
-                <li><a href="#advantage">教学优势</a></li>
-                <li><a href="#book">预约试听</a></li>
-            </ul>
-            <a href="#book" class="nav-book-btn">立即预约</a>
-        </div>
-    </header>
+    <header>学习预约中心</header>
 
-    <!-- 首屏 -->
-    <section class="banner" id="home">
-        <div class="container banner-text">
-            <h1>小学 · 初中 · 高中 全科辅导</h1>
-            <p>一对一精准辅导 | 小班精品课堂 | 免费试听测评</p>
-            <a href="#book" class="banner-btn">免费预约试听</a>
-            <a href="#course" class="banner-btn banner-btn2">查看课程</a>
+    <div class="container">
+        <div class="card">
+            <h2>预约课程</h2>
+            <input type="text" placeholder="请输入姓名">
+            <input type="tel" placeholder="请输入手机号">
+            <select>
+                <option>选择课程</option>
+                <option>语文辅导</option>
+                <option>数学辅导</option>
+                <option>英语辅导</option>
+            </select>
+            <input type="date">
+            <button>提交预约</button>
         </div>
-    </section>
+    </div>
 
-    <!-- 课程体系 -->
-    <section id="course">
-        <div class="container">
-            <div class="section-title">
-                <h2>课程体系分类</h2>
-                <p>覆盖小学1-6年级、初中1-3年级、高中全科同步辅导</p>
-            </div>
-            <div class="course-row">
-                <div class="course-card">
-                    <h3>小学全科辅导</h3>
-                    <p>语文、数学、英语<br>基础巩固、习惯培养、同步拔高</p>
-                    <a href="#book">立即预约</a>
-                </div>
-                <div class="course-card">
-                    <h3>初中中考冲刺</h3>
-                    <p>语数英物化生<br>重难点突破、中考考点专项训练</p>
-                    <a href="#book">立即预约</a>
-                </div>
-                <div class="course-card">
-                    <h3>高中高考培优</h3>
-                    <p>全科培优、错题精讲<br>拔高提分、冲刺理想大学</p>
-                    <a href="#book">立即预约</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 教学优势 -->
-    <section class="advantage-bg" id="advantage">
-        <div class="container">
-            <div class="section-title">
-                <h2>我们的教学优势</h2>
-                <p>专业师资 · 定制方案 · 贴心服务 · 稳步提分</p>
-            </div>
-            <div class="adv-row">
-                <div class="adv-item">
-                    <h4>专业师资</h4>
-                    <p>多年一线教学经验老师</p>
-                </div>
-                <div class="adv-item">
-                    <h4>分层教学</h4>
-                    <p>按基础分班，因材施教</p>
-                </div>
-                <div class="adv-item">
-                    <h4>免费测评</h4>
-                    <p>入学学情诊断，定制学习计划</p>
-                </div>
-                <div class="adv-item">
-                    <h4>课后跟进</h4>
-                    <p>作业辅导+定期学情反馈</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 预约试听 -->
-    <section id="book">
-        <div class="container">
-            <div class="book-row">
-                <div class="book-left">
-                    <h3>免费预约<br>一对一学情测评</h3>
-                    <p>✅ 免费学科水平测试</p>
-                    <p>✅ 专业老师学习规划建议</p>
-                    <p>✅ 定制专属提升方案</p>
-                    <p>✅ 无隐形消费，家长放心报名</p>
-                </div>
-                <div class="book-form">
-                    <form>
-                        <div class="form-item">
-                            <label>学生姓名</label>
-                            <input type="text" placeholder="请输入学生姓名" required>
-                        </div>
-                        <div class="form-item">
-                            <label>就读年级</label>
-                            <select required>
-                                <option value="">请选择年级</option>
-                                <option>小学1-3年级</option>
-                                <option>小学4-6年级</option>
-                                <option>初一/初二/初三</option>
-                                <option>高一/高二/高三</option>
-                            </select>
-                        </div>
-                        <div class="form-item">
-                            <label>意向学科</label>
-                            <select required>
-                                <option value="">请选择学科</option>
-                                <option>语文</option>
-                                <option>数学</option>
-                                <option>英语</option>
-                                <option>物理/化学</option>
-                                <option>全科辅导</option>
-                            </select>
-                        </div>
-                        <div class="form-item">
-                            <label>家长手机号</label>
-                            <input type="tel" placeholder="请输入联系电话" required>
-                        </div>
-                        <div class="form-item">
-                            <label>备注需求</label>
-                            <textarea rows="3" placeholder="可填写孩子薄弱科目、上课时间要求"></textarea>
-                        </div>
-                        <button class="submit">提交免费预约</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>咨询热线：15773059623 | 微信同号</p>
-            <p>地址：可填写线下校区地址</p>
-            <p>© 2025 优学教育辅导 版权所有</p>
-        </div>
-    </footer>
-
-    <!-- 导航滚动变色JS -->
-    <script>
-        window.addEventListener('scroll',function(){
-            let nav = document.getElementById('navbar');
-            if(window.scrollY > 50){
-                nav.classList.add('active');
-            }else{
-                nav.classList.remove('active');
-            }
-        })
-    </script>
+    <footer>© 2025 学习预约系统 版权所有</footer>
 </body>
 </html>
